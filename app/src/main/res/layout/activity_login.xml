@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tabAttr="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/mytooler"></include>
+        <RelativeLayout
+            tabAttr:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rel_second"
+                android:layout_marginTop="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/img_second"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_50"
+                    android:src="@drawable/home"
+                    />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_toRightOf="@+id/img_second"
+                    android:text="房产中介"
+                    android:textColor="@color/gray2"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/text_des"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/rel_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="住的放心，我们开心"
+                />
+            <RelativeLayout
+                android:id="@+id/login_userlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_40"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_body_padding"
+                android:paddingRight="@dimen/activity_body_padding"
+                android:layout_below="@+id/text_des">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:src="@drawable/ic_user_name"
+                    />
+
+                <EditText
+                    android:id="@+id/login_phone"
+                    android:hint="请输入手机号"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    >
+
+                    <requestFocus />
+                </EditText>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/login_passlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/login_userlay"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_body_padding"
+                android:paddingRight="@dimen/activity_body_padding" >
+
+                <ImageView
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:src="@drawable/ic_password"
+                    />
+
+
+                <EditText
+                    android:id="@+id/login_pass"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="请输入密码"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLength="15" />
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/login_passlay"
+                android:layout_marginLeft="@dimen/activity_body_padding"
+                android:layout_marginRight="@dimen/activity_body_padding"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_login_color"
+                android:text="登录"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_below="@+id/submit"
+                android:id="@+id/text_zhuce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/umeng_comm_lv_header_color1"
+                android:text="没有账号？前往注册" />
+
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
