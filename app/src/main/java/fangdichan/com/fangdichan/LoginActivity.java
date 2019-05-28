@@ -58,7 +58,18 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick({R.id.text_zhuce,R.id.submit})
     public void onViewClicked(View view) {
+        Intent intent;
+            switch (view.getId()){
+                case R.id.text_zhuce:
+                intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                    break;
 
+                case R.id.submit:
+                    intent = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    break;
+            }
     }
 
 }
