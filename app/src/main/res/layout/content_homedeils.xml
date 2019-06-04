@@ -14,11 +14,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="户型："
+            android:textSize="@dimen/sp_18"
+           android:layout_marginLeft="16dp"
+            android:textColor="@color/title_black"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="信息" />
+            android:layout_marginLeft="16dp"
+            android:text="一室一厅" />
+        <TextView
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="条件："
+            android:textSize="@dimen/sp_18"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/title_black"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="带空调，洗衣机，独立厨房，拎包入住" />
+
+        <TextView
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简介："
+            android:textSize="@dimen/sp_18"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/title_black"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="卧室朝南带阳台，户型规整方正，干净整洁的床等你，视野开阔，靠近brt，交通方便，离地铁站290米。" />
 
     </LinearLayout>
 
