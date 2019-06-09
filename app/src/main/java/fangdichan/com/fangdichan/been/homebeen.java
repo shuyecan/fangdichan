@@ -1,15 +1,24 @@
 package fangdichan.com.fangdichan.been;
 
 public class homebeen {
-    private int imgurl;
+    private String imgurl;
+    private String homeid;
     private String address;
     private String money;
 
-    public int getImgurl() {
+    public String getHomeid() {
+        return homeid;
+    }
+
+    public void setHomeid(String homeid) {
+        this.homeid = homeid;
+    }
+
+    public String getImgurl() {
         return imgurl;
     }
 
-    public void setImgurl(int imgurl) {
+    public void setImgurl(String imgurl) {
         this.imgurl = imgurl;
     }
 

@@ -73,7 +73,7 @@
 
                 <EditText
                     android:id="@+id/login_phone"
-                    android:hint="请输入手机号"
+                    android:hint="请输入用户名"
                     android:background="@drawable/edittext_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

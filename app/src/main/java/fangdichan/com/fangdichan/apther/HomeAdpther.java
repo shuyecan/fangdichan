@@ -46,7 +46,9 @@ public class HomeAdpther extends RecyclerView.Adapter<HomeAdpther.ViewHolder> {
         final homebeen home = list.get(i);
         viewHolder.text_home_address.setText(home.getAddress());
         viewHolder.text_home_money.setText(home.getMoney());
-        Glide.with(context).load(home.getImgurl()).into(viewHolder.img_home_bg);
+        if(home.getImgurl().equals("1")) {
+            Glide.with(context).load(R.mipmap.home1).into(viewHolder.img_home_bg);
+        }
         viewHolder.card_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

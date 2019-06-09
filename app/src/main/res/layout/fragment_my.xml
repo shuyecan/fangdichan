@@ -37,7 +37,7 @@
 
 
         <TextView
-            android:id="@+id/driver_tel"
+            android:id="@+id/driver_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/driver_username"

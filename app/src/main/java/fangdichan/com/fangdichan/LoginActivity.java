@@ -12,13 +12,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.litepal.LitePal;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import fangdichan.com.fangdichan.been.BaseBeen;
+import fangdichan.com.fangdichan.been.UserBeen;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -61,13 +69,49 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent;
             switch (view.getId()){
                 case R.id.text_zhuce:
-                intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                intent = new Intent(LoginActivity.this,ReistActivity.class);
                 startActivity(intent);
                     break;
 
                 case R.id.submit:
-                    intent = new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(intent);
+                    String userName = loginPhone.getText().toString();
+                    String password = loginPass.getText().toString();
+                    String type = "1";
+                    RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/property/getUserInfo");
+                    params.addQueryStringParameter("userName",userName);
+                    params.addQueryStringParameter("password",password);
+                    params.addQueryStringParameter("type",type);
+                    x.http().get(params, new Callback.CommonCallback<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            if(!"[]".equals(result)){
+                                Gson gs = new Gson();
+                                List<UserBeen> list =  gs.fromJson(result,new TypeToken<List<UserBeen>>(){}.getType());
+                                UserBeen userBeen = list.get(0);
+                                boolean is = userBeen.save();
+                                Toast.makeText(LoginActivity.this, "登陆成功！", Toast.LENGTH_SHORT).show();
+                                setResult(200);
+                                finish();
+                            }else {
+                                Toast.makeText(LoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable ex, boolean isOnCallback) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(CancelledException cex) {
+
+                        }
+
+                        @Override
+                        public void onFinished() {
+
+                        }
+                    });
                     break;
             }
     }

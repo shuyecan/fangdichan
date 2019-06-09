@@ -26,7 +26,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_5"
             android:layout_toRightOf="@+id/img_city"
-            android:text="城市选择" />
+            android:text="广州" />
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/rela_city"

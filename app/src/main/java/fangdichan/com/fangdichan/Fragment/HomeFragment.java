@@ -16,12 +16,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
 import com.zaaach.citypicker.model.HotCity;
 import com.zaaach.citypicker.model.LocateState;
 import com.zaaach.citypicker.model.LocatedCity;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +38,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import fangdichan.com.fangdichan.R;
 import fangdichan.com.fangdichan.apther.HomeAdpther;
+import fangdichan.com.fangdichan.been.Homelistbeen;
+import fangdichan.com.fangdichan.been.UserBeen;
 import fangdichan.com.fangdichan.been.homebeen;
 
 public class HomeFragment extends Fragment {
@@ -63,16 +71,42 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView() {
-        for (int i = 0; i < 50; i++) {
-            homebeen home = new homebeen();
-            home.setAddress("广州天河");
-            home.setMoney("39000/㎡");
-            home.setImgurl(R.mipmap.home1);
-            homelists.add(home);
-        }
+        RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/property/getProperInfo");
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gs = new Gson();
+                if(!result.equals("[]")) {
+                    List<Homelistbeen> list = gs.fromJson(result, new TypeToken<List<Homelistbeen>>() {
+                    }.getType());
+                    for (int i =0;i<list.size();i++){
+                        homebeen home =  new homebeen();
+                        home.setAddress(list.get(i).getPropertyName());
+                        home.setHomeid(list.get(i).getId());
+                        home.setMoney(list.get(i).getPrice()+"m²");
+                        home.setImgurl(list.get(i).getPictureName());
+                        homelists.add(home);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
 
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
         adapter = new HomeAdpther(homelists, getActivity());
-
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyList.setLayoutManager(layoutManager);
