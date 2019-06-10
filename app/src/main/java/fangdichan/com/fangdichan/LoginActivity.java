@@ -84,11 +84,9 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(this, "请输入用户名或密码", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    String type = "1";
                     RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/property/getUserInfo");
                     params.addQueryStringParameter("userName",userName);
                     params.addQueryStringParameter("password",password);
-                    params.addQueryStringParameter("type",type);
                     x.http().get(params, new Callback.CommonCallback<String>() {
                         @Override
                         public void onSuccess(String result) {

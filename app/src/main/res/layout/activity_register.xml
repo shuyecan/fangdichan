@@ -86,7 +86,6 @@
             android:id="@+id/reg_Sex"
             style="@style/loginEditStyle"
             android:hint="请输入性别（男|女）"
-            android:inputType="number"
             android:maxLength="11"
             android:maxLines="1" >
         </EditText>

@@ -122,6 +122,28 @@
 
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_body_padding"
+        android:paddingRight="@dimen/activity_body_padding" >
+
+        <EditText
+            android:id="@+id/desc"
+            style="@style/loginEditStyle"
+            android:hint="请输入简介"
+            android:maxLines="1" >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            style="@style/loginEditText"
+            android:text="房间简介" />
+    </RelativeLayout>
+
+
+
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"

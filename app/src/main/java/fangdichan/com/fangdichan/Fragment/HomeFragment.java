@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,6 +59,8 @@ public class HomeFragment extends Fragment {
     RelativeLayout relaCity;
     @BindView(R.id.float_btnadd)
     FloatingActionButton float_btnadd;
+    @BindView(R.id.swipe)
+    SwipeRefreshLayout swipe;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,6 +68,18 @@ public class HomeFragment extends Fragment {
             view = inflater.from(getActivity()).inflate(R.layout.fragemnt_home, null);
             ButterKnife.bind(this, view);
             initView();
+            adapter = new HomeAdpther(homelists, getActivity());
+            GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            recyList.setLayoutManager(layoutManager);
+            recyList.setAdapter(adapter);
+            swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    initView();
+                    swipe.setRefreshing(false);
+                }
+            });
         } else {
             ViewGroup parent = (ViewGroup) view.getParent();
             if (parent != null) {
@@ -83,10 +98,11 @@ public class HomeFragment extends Fragment {
                 if(!result.equals("[]")) {
                     List<Homelistbeen> list = gs.fromJson(result, new TypeToken<List<Homelistbeen>>() {
                     }.getType());
+                    homelists.clear();
                     for (int i =0;i<list.size();i++){
                         homebeen home =  new homebeen();
                         home.setAddress(list.get(i).getPropertyName());
-                        home.setHomeid(list.get(i).getId());
+                        home.setHomeid(list.get(i).getHomeId());
                         home.setMoney(list.get(i).getPrice()+"m²");
                         home.setImgurl(list.get(i).getPictureName());
                         homelists.add(home);
@@ -110,13 +126,13 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        adapter = new HomeAdpther(homelists, getActivity());
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyList.setLayoutManager(layoutManager);
-        recyList.setAdapter(adapter);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        initView();
+    }
 
     @OnClick({R.id.rela_city,R.id.float_btnadd})
     public void onViewClicked(View view) {
@@ -159,7 +175,7 @@ public class HomeFragment extends Fragment {
                     return;
                 }
                 Intent intent = new Intent(getActivity(),AddHomeActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,100);
                 break;
         }
 

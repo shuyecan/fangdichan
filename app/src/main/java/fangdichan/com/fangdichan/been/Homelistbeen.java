@@ -20,11 +20,11 @@ public class Homelistbeen {
     private String price;
     private String collectionUserId;
     private String propeIntrote;
-    private String id;
+    private String homeId;
     private String pictureName;
     private String propeSize;
     private String userId;
-    private String desc;
+    private String descSrc;
 
     public String getPropertyName() {
         return propertyName;
@@ -66,12 +66,12 @@ public class Homelistbeen {
         this.propeIntrote = propeIntrote;
     }
 
-    public String getId() {
-        return id;
+    public String getHomeId() {
+        return homeId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setHomeId(String id) {
+        this.homeId = id;
     }
 
     public String getPictureName() {
@@ -98,11 +98,11 @@ public class Homelistbeen {
         this.userId = userId;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescSrc() {
+        return descSrc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescSrc(String desc) {
+        this.descSrc = desc;
     }
 }

@@ -15,17 +15,21 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
 import java.util.List;
 
-import fangdichan.com.fangdichan.HomedeilsActivity;
 import fangdichan.com.fangdichan.R;
+import fangdichan.com.fangdichan.UpdateHomeActivity;
 import fangdichan.com.fangdichan.been.homebeen;
 
-public class HomeAdpther extends RecyclerView.Adapter<HomeAdpther.ViewHolder> {
+public class HomelistAdpther extends RecyclerView.Adapter<HomelistAdpther.ViewHolder> {
     List<homebeen> list;
     Context context;
 
-    public HomeAdpther(List<homebeen> list, Context context) {
+    public HomelistAdpther(List<homebeen> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -36,8 +40,8 @@ public class HomeAdpther extends RecyclerView.Adapter<HomeAdpther.ViewHolder> {
         if(context==null){
             context = viewGroup.getContext();
         }
-        View view = LayoutInflater.from(context).inflate(R.layout.item_mian_home, viewGroup, false);
-        final ViewHolder holder = new ViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_homelist, viewGroup, false);
+        final HomelistAdpther.ViewHolder holder = new HomelistAdpther.ViewHolder(view);
         return holder;
     }
 
@@ -53,15 +57,49 @@ public class HomeAdpther extends RecyclerView.Adapter<HomeAdpther.ViewHolder> {
         }else if(home.getImgurl().equals("3")){
             Glide.with(context).load(R.mipmap.home3).into(viewHolder.img_home_bg);
         }
-        viewHolder.card_home.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.text_shanchu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,HomedeilsActivity.class);
-                ActivityOptionsCompat options = ActivityOptionsCompat
-                        .makeSceneTransitionAnimation((Activity) context,
-                                viewHolder.img_home_bg,"img_home_bg");
+                dele(home.getHomeid(),i);
+            }
+        });
+
+        viewHolder.text_bianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UpdateHomeActivity.class);
                 intent.putExtra("homeId",home.getHomeid());
-                context.startActivity(intent,options.toBundle());
+                context.startActivity(intent);
+            }
+        });
+    }
+
+
+
+    private void dele(String homeId, final int p){
+        RequestParams params = new RequestParams(context.getResources().getString(R.string.ip)+"/MybatisDemo/property/deleteProperInfo");
+        params.addQueryStringParameter("homeId",homeId);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                list.remove(p);
+                notifyItemRemoved(p);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
             }
         });
     }
@@ -73,7 +111,7 @@ public class HomeAdpther extends RecyclerView.Adapter<HomeAdpther.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView text_home_address,text_home_money;
+        TextView text_home_address,text_home_money,text_bianji,text_shanchu;
         ImageView img_home_bg;
         CardView card_home;
         public ViewHolder(@NonNull View itemView) {
@@ -82,6 +120,8 @@ public class HomeAdpther extends RecyclerView.Adapter<HomeAdpther.ViewHolder> {
             text_home_address = itemView.findViewById(R.id.text_home_address);
             text_home_money = itemView.findViewById(R.id.text_home_money);
             img_home_bg = itemView.findViewById(R.id.img_home_bg);
+            text_bianji = itemView.findViewById(R.id.text_bianji);
+            text_shanchu = itemView.findViewById(R.id.text_shanchu);
         }
     }
 }

@@ -78,10 +78,10 @@ public class ReistActivity extends AppCompatActivity {
             Toast.makeText(this, "请把信息填写完整", Toast.LENGTH_SHORT).show();
             return;
         }
-//        else if(!sex.equals("男")&&!sex.equals("女")){
-//            Toast.makeText(this, "性别类型错误！", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        else if(!sex.equals("男")&&!sex.equals("女")){
+            Toast.makeText(this, "性别类型错误！", Toast.LENGTH_SHORT).show();
+            return;
+        }
         RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/property/addUserInfo");
         params.addQueryStringParameter("userName",userName);
         params.addQueryStringParameter("password",password);

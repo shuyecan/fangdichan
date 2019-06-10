@@ -28,14 +28,19 @@
             android:layout_toRightOf="@+id/img_city"
             android:text="广州" />
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_below="@+id/rela_city"
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/swipe"
         android:id="@+id/recy_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/float_btnadd"
         android:layout_width="wrap_content"

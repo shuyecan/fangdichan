@@ -17,6 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UpdateHomeActivity"></activity>
+        <activity android:name=".HomelistActivity" />
+        <activity android:name=".UserlistActivity" />
+        <activity android:name=".LikehomeActivity" />
+        <activity android:name=".UpdateUserActivity" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -36,7 +41,7 @@
             android:label="@string/title_activity_homedeils"
             android:theme="@style/AppTheme" />
         <activity android:name=".ReistActivity" />
-        <activity android:name=".AddHomeActivity"></activity>
+        <activity android:name=".AddHomeActivity" />
     </application>
 
 </manifest>
