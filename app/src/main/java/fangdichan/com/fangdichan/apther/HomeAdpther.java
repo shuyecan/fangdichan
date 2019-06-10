@@ -56,6 +56,7 @@ public class HomeAdpther extends RecyclerView.Adapter<HomeAdpther.ViewHolder> {
                 ActivityOptionsCompat options = ActivityOptionsCompat
                         .makeSceneTransitionAnimation((Activity) context,
                                 viewHolder.img_home_bg,"img_home_bg");
+                intent.putExtra("homeId",home.getHomeid());
                 context.startActivity(intent,options.toBundle());
             }
         });

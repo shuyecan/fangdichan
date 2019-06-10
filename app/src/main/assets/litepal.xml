@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="manager" ></dbname>
+    <!--增加了表：app本地数据库，需要增加此值 +1 -->
+    <version value="1" ></version>
+
+    <list>
+
+        <mapping class="fangdichan.com.fangdichan.been.UserBeen"></mapping>
+    </list>
+</litepal>
+

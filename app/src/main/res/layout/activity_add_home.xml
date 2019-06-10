@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddHomeActivity">
+
+
+    <include layout="@layout/mytooler"></include>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_body_padding"
+        android:paddingRight="@dimen/activity_body_padding" >
+
+        <EditText
+            android:id="@+id/propertyName"
+            style="@style/loginEditStyle"
+            android:hint="请输入标题"
+            android:maxLines="1" >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            style="@style/loginEditText"
+            android:text="房产标题" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_body_padding"
+        android:paddingRight="@dimen/activity_body_padding" >
+
+        <EditText
+            android:id="@+id/price"
+            style="@style/loginEditStyle"
+            android:hint="请输入价格(每平米)"
+            android:maxLength="11"
+            android:maxLines="1" >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            style="@style/loginEditText"
+            android:text="房产价格" />
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_body_padding"
+        android:paddingRight="@dimen/activity_body_padding" >
+
+        <EditText
+            android:id="@+id/phone"
+            style="@style/loginEditStyle"
+            android:hint="请输入您的联系电话"
+            android:maxLines="1" >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            style="@style/loginEditText"
+            android:text="联系电话" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_body_padding"
+        android:paddingRight="@dimen/activity_body_padding" >
+
+        <EditText
+            android:id="@+id/propeSize"
+            style="@style/loginEditStyle"
+            android:hint="请输入房间户型"
+            android:maxLines="1" >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            style="@style/loginEditText"
+            android:text="房间户型" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_body_padding"
+        android:paddingRight="@dimen/activity_body_padding" >
+
+        <EditText
+            android:id="@+id/propeIntrote"
+            style="@style/loginEditStyle"
+            android:hint="请输入介绍"
+            android:maxLines="1" >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            style="@style/loginEditText"
+            android:text="房间介绍" />
+    </RelativeLayout>
+
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/login_passlay"
+        android:layout_marginLeft="@dimen/activity_body_padding"
+        android:layout_marginRight="@dimen/activity_body_padding"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_login_color"
+        android:text="发布"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+</LinearLayout>

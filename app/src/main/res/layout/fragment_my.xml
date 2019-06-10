@@ -77,6 +77,41 @@
         android:layout_height="0.1dp"
         android:background="@color/colorLine" />
 
+
+    <LinearLayout
+        android:id="@+id/driver_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/click_bg1"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="15dp"  >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_password" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorGray_5"
+            android:textSize="@dimen/sp_14"
+            android:text="密码修改"/>
+
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@mipmap/ic_right" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
     <LinearLayout
         android:id="@+id/driver_binding_referrer"
         android:layout_width="match_parent"
@@ -98,7 +133,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="@color/colorGray_5"
             android:textSize="@dimen/sp_14"
-            android:text="房产上架"/>
+            android:text="房产管理"/>
 
 
         <ImageView
@@ -169,7 +204,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="@color/colorGray_5"
             android:textSize="@dimen/sp_14"
-            android:text="房产管理"/>
+            android:text="用户管理"/>
 
 
         <ImageView
@@ -183,4 +218,22 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/colorLine" />
+
+
+
+    <Button
+        android:id="@+id/user_loginout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/light_red"
+        android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp" />
 </LinearLayout>

@@ -1,5 +1,6 @@
 package fangdichan.com.fangdichan.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ import com.zaaach.citypicker.model.HotCity;
 import com.zaaach.citypicker.model.LocateState;
 import com.zaaach.citypicker.model.LocatedCity;
 
+import org.litepal.LitePal;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
@@ -36,6 +39,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import fangdichan.com.fangdichan.AddHomeActivity;
 import fangdichan.com.fangdichan.R;
 import fangdichan.com.fangdichan.apther.HomeAdpther;
 import fangdichan.com.fangdichan.been.Homelistbeen;
@@ -149,7 +153,13 @@ public class HomeFragment extends Fragment {
                 break;
 
             case R.id.float_btnadd:
-                Toast.makeText(getActivity(), "dd", Toast.LENGTH_SHORT).show();
+                List<UserBeen> list = LitePal.findAll(UserBeen.class);
+                if(list.size()==0){
+                    Toast.makeText(getActivity(), "请先登录！", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intent = new Intent(getActivity(),AddHomeActivity.class);
+                startActivity(intent);
                 break;
         }
 

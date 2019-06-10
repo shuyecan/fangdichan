@@ -13,8 +13,12 @@ import android.widget.Toast;
 
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.litepal.LitePal;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -76,6 +80,10 @@ public class LoginActivity extends AppCompatActivity {
                 case R.id.submit:
                     String userName = loginPhone.getText().toString();
                     String password = loginPass.getText().toString();
+                    if(userName.isEmpty()||password.isEmpty()){
+                        Toast.makeText(this, "请输入用户名或密码", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     String type = "1";
                     RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/property/getUserInfo");
                     params.addQueryStringParameter("userName",userName);

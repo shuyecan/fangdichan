@@ -9,6 +9,15 @@ public class UserBeen extends LitePalSupport {
     String name;
     String type;
     String one;
+    String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getOne() {
         return one;

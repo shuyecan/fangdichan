@@ -74,7 +74,7 @@ public class ReistActivity extends AppCompatActivity {
         String sex = regSex.getText().toString();
         String name = regName.getText().toString();
         String type = "1";
-        if(userName.isEmpty()&&password.isEmpty()&&sex.isEmpty()&&name.isEmpty()){
+        if(userName.isEmpty()||password.isEmpty()||sex.isEmpty()||name.isEmpty()){
             Toast.makeText(this, "请把信息填写完整", Toast.LENGTH_SHORT).show();
             return;
         }

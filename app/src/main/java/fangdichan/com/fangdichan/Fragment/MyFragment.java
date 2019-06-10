@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,7 +32,9 @@ public class MyFragment extends Fragment {
     TextView driverType;
     @BindView(R.id.driver_username)
     TextView driverUsername;
-
+    @BindView(R.id.user_loginout)
+    Button user_loginout;
+    UserBeen userBeen;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,7 +54,7 @@ public class MyFragment extends Fragment {
     private void initView() {
         List<UserBeen> list = LitePal.findAll(UserBeen.class);
         if (list.size() > 0) {
-            UserBeen userBeen = list.get(0);
+            userBeen = list.get(0);
             driverUsername.setText(userBeen.getUserName());
             if(userBeen.getType().equals("1")){
                 driverType.setText("普通用户");
@@ -78,12 +81,23 @@ public class MyFragment extends Fragment {
         }
     }
 
-    @OnClick(R.id.linear_user)
-    public void onViewClicked() {
-        if(driverUsername.getText().equals("请先登陆")) {
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
-            startActivityForResult(intent, 102);
+    @OnClick({R.id.linear_user,R.id.user_loginout})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.user_loginout:
+
+                LitePal.deleteAll(UserBeen.class);
+                driverUsername.setText("请先登录");
+                driverType.setText("未登录");
+                break;
+            case R.id.linear_user:
+                if(driverUsername.getText().equals("请先登录")) {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivityForResult(intent, 102);
+                }
+                break;
         }
+
     }
 
 }
